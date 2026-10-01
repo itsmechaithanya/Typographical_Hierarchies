@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typographical Hierarchies | Chaithanya</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Custom Overrides & Google Fonts -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="index-page-body">
+
+  <!-- Offcanvas Navigation Menu -->
+  <div class="offcanvas offcanvas-end offcanvas-editorial" tabindex="-1" id="navOffcanvas" aria-labelledby="navOffcanvasLabel">
+    <div class="offcanvas-header pt-4 px-4 pb-0">
+      <h5 class="offcanvas-title fw-bold" id="navOffcanvasLabel">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body px-4 pt-3">
+      <nav class="nav flex-column">
+        <a class="nav-link" href="hierarchies/hierarchy1.html">Hierarchy 1: Ramaraja & Josefin Sans</a>
+        <a class="nav-link" href="hierarchies/hierarchy2.html">Hierarchy 2: Raleway</a>
+        <a class="nav-link" href="hierarchies/hierarchy3.html">Hierarchy 3: Outfit</a>
+      </nav>
+      <div class="mt-5 pt-4 border-top">
+        <p class="small text-muted mb-1">Web Typography Project</p>
+        <p class="small text-muted mb-0">Designed by Chaithanya</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full 100vh Screen Wrapper -->
+  <div class="index-screen-wrapper">
+    <!-- Header Navigation -->
+    <header class="container editorial-nav">
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="index.html" class="brand-logo">Chaithanya</a>
+        <button class="nav-menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#navOffcanvas" aria-controls="navOffcanvas" aria-label="Toggle navigation menu">
+          <div class="menu-dots-icon">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+          </div>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Hero Center Section -->
+    <main class="container my-auto">
+      <div class="hero-center-box text-center">
+        <div class="hero-title-wrap">
+          <h1 class="hero-typographical">Typographical</h1>
+          <div class="hero-hierarchies">Hierarchies</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 3 Hierarchy Navigation Cards at Bottom -->
+    <section class="container pb-4 pb-md-5">
+      <div class="row w-100 hierarchy-cards-row justify-content-center mx-auto">
+        <!-- Hierarchy 1: Ramaraja X Josefin Sans -->
+        <div class="col-12 col-md-4 hierarchy-card-item">
+          <div class="hierarchy-card-title h1-title">
+            <strong>Ramaraja</strong> <span>X Josefin Sans</span>
+          </div>
+          <a href="hierarchies/hierarchy1.html" class="btn-editorial-pill">View</a>
+        </div>
+
+        <!-- Hierarchy 2: Raleway -->
+        <div class="col-12 col-md-4 hierarchy-card-item">
+          <div class="hierarchy-card-title h2-title">
+            Raleway
+          </div>
+          <a href="hierarchies/hierarchy2.html" class="btn-editorial-pill">View</a>
+        </div>
+
+        <!-- Hierarchy 3: Outfit -->
+        <div class="col-12 col-md-4 hierarchy-card-item">
+          <div class="hierarchy-card-title h3-title">
+            Outfit
+          </div>
+          <a href="hierarchies/hierarchy3.html" class="btn-editorial-pill">View</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
