@@ -4,91 +4,142 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Typographical Hierarchies | Chaithanya</title>
+  <meta name="description" content="An exploration of web typographical hierarchies, modular scales, and font pairings designed by Chaithanya.">
   
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   
-  <!-- Custom Overrides & Google Fonts -->
+  <!-- Custom Stylesheet & Google Fonts -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="index-page-body">
 
-  <!-- Offcanvas Navigation Menu -->
-  <div class="offcanvas offcanvas-end offcanvas-editorial" tabindex="-1" id="navOffcanvas" aria-labelledby="navOffcanvasLabel">
-    <div class="offcanvas-header pt-4 px-4 pb-0">
-      <h5 class="offcanvas-title fw-bold" id="navOffcanvasLabel">Menu</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <!-- Background Dimming Overlay for Menu -->
+  <div class="luxury-menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
+
+  <!-- Luxury Side Menu Drawer -->
+  <aside class="luxury-corner-drawer" id="luxuryMenuDrawer" role="dialog" aria-modal="true" aria-label="Font Navigation Menu">
+    <div class="menu-drawer-top-bar">
+      <button type="button" class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close menu drawer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </div>
-    <div class="offcanvas-body px-4 pt-3">
-      <nav class="nav flex-column">
-        <a class="nav-link" href="hierarchies/hierarchy1.html">Hierarchy 1: Ramaraja & Josefin Sans</a>
-        <a class="nav-link" href="hierarchies/hierarchy2.html">Hierarchy 2: Raleway</a>
-        <a class="nav-link" href="hierarchies/hierarchy3.html">Hierarchy 3: Outfit</a>
-      </nav>
-      <div class="mt-5 pt-4 border-top">
-        <p class="small text-muted mb-1">Web Typography Project</p>
-        <p class="small text-muted mb-0">Designed by Chaithanya</p>
-      </div>
+
+    <nav class="menu-items-nav">
+      <a href="hierarchies/hierarchy1.html" class="menu-drawer-item" id="menuH1Link">
+        <span class="item-title-outfit">Ramaraja</span>
+        <span class="item-font-sub">&amp; Josefin Sans (1.200)</span>
+      </a>
+      <a href="hierarchies/hierarchy2.html" class="menu-drawer-item" id="menuH2Link">
+        <span class="item-title-outfit">Raleway</span>
+        <span class="item-font-sub">Variable Family (1.250)</span>
+      </a>
+      <a href="hierarchies/hierarchy3.html" class="menu-drawer-item" id="menuH3Link">
+        <span class="item-title-outfit">Outfit</span>
+        <span class="item-font-sub">Geometric Modern (1.200)</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Continuous Horizontal Scrolling Background Marquee Text -->
+  <div class="marquee-bg-wrap" aria-hidden="true">
+    <div class="marquee-content-track">
+      <span class="marquee-stream-text">Typographical Hierarchies &bull; Ramaraja &amp; Josefin Sans &bull; Raleway &bull; Outfit &bull; Elevating Type &bull; </span>
+      <span class="marquee-stream-text">Typographical Hierarchies &bull; Ramaraja &amp; Josefin Sans &bull; Raleway &bull; Outfit &bull; Elevating Type &bull; </span>
     </div>
   </div>
 
-  <!-- Full 100vh Screen Wrapper -->
-  <div class="index-screen-wrapper">
-    <!-- Header Navigation -->
-    <header class="container editorial-nav">
-      <div class="d-flex justify-content-between align-items-center">
-        <a href="index.html" class="brand-logo">Chaithanya</a>
-        <button class="nav-menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#navOffcanvas" aria-controls="navOffcanvas" aria-label="Toggle navigation menu">
-          <div class="menu-dots-icon">
-            <span></span><span></span><span></span>
-            <span></span><span></span><span></span>
-            <span></span><span></span><span></span>
+  <!-- Main Viewport Layout Wrapper -->
+  <div class="luxury-home-container">
+    
+    <!-- Top Navigation: Chaithanya on Left, Menu Controls on Right -->
+    <header class="luxury-top-nav">
+      <a href="index.html" class="brand-left-logo" aria-label="Chaithanya Brand Home">
+        <span>Chaithanya</span>
+      </a>
+
+      <!-- Menu Button on Top Right -->
+      <div class="top-action-controls">
+        <button type="button" class="btn-selection-outline" id="selectionBtn" aria-label="Open font selection drawer">
+          <span>Our Selection</span>
+          <div class="dots-square-icon" aria-hidden="true">
+            <span></span><span></span>
+            <span></span><span></span>
           </div>
+        </button>
+        <button type="button" class="btn-menu-toggle-dark" id="toggleMenuBtn" aria-label="Toggle navigation drawer">
+          <span class="bar"></span>
+          <span class="bar"></span>
         </button>
       </div>
     </header>
 
-    <!-- Main Hero Center Section -->
-    <main class="container my-auto">
-      <div class="hero-center-box text-center">
-        <div class="hero-title-wrap">
-          <h1 class="hero-typographical">Typographical</h1>
-          <div class="hero-hierarchies">Hierarchies</div>
-        </div>
+    <!-- Main Visual Focal Center (Centered on Screen) -->
+    <main class="hero-visual-center">
+      <div class="hero-image-frame" id="heroCard">
+        <img src="images/hero.jpg" alt="Editorial Architectural Vista" width="600" height="600" loading="eager">
       </div>
+
+      <h1 class="hero-caption-heading">
+        Invest in Exceptional Web Typography<br>
+        and Modular Hierarchy Systems.
+      </h1>
     </main>
 
-    <!-- 3 Hierarchy Navigation Cards at Bottom -->
-    <section class="container pb-4 pb-md-5">
-      <div class="row w-100 hierarchy-cards-row justify-content-center mx-auto">
-        <!-- Hierarchy 1: Ramaraja X Josefin Sans -->
-        <div class="col-12 col-md-4 hierarchy-card-item">
-          <div class="hierarchy-card-title h1-title">
-            <strong>Ramaraja</strong> <span>X Josefin Sans</span>
-          </div>
-          <a href="hierarchies/hierarchy1.html" class="btn-editorial-pill">View</a>
-        </div>
-
-        <!-- Hierarchy 2: Raleway -->
-        <div class="col-12 col-md-4 hierarchy-card-item">
-          <div class="hierarchy-card-title h2-title">
-            Raleway
-          </div>
-          <a href="hierarchies/hierarchy2.html" class="btn-editorial-pill">View</a>
-        </div>
-
-        <!-- Hierarchy 3: Outfit -->
-        <div class="col-12 col-md-4 hierarchy-card-item">
-          <div class="hierarchy-card-title h3-title">
-            Outfit
-          </div>
-          <a href="hierarchies/hierarchy3.html" class="btn-editorial-pill">View</a>
-        </div>
+    <!-- Bottom Status Bar -->
+    <footer class="luxury-bottom-bar">
+      <div class="bottom-copyright-tag">
+        Chaithanya<sup>®</sup> 2026 &bull; HCI 472 Assignment 
       </div>
-    </section>
+    </footer>
+
   </div>
 
-  <!-- Bootstrap 5 JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <!-- Interactive Drawer Controller -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const drawer = document.getElementById('luxuryMenuDrawer');
+      const backdrop = document.getElementById('menuBackdrop');
+      const selectionBtn = document.getElementById('selectionBtn');
+      const toggleMenuBtn = document.getElementById('toggleMenuBtn');
+      const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+      function openMenu() {
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+        drawer.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeMenu() {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('open');
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+
+      function toggleMenu() {
+        if (drawer.classList.contains('open')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      }
+
+      // Event Listeners for Menu Toggle & Close
+      if (selectionBtn) selectionBtn.addEventListener('click', toggleMenu);
+      if (toggleMenuBtn) toggleMenuBtn.addEventListener('click', toggleMenu);
+      if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeMenu);
+      if (backdrop) backdrop.addEventListener('click', closeMenu);
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && drawer.classList.contains('open')) {
+          closeMenu();
+        }
+      });
+    });
+  </script>
 </body>
 </html>

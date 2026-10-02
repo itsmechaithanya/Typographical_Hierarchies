@@ -6,23 +6,30 @@
 
 /* --------------------------------------------------------------------------
    Google Fonts Import
-   1. Ramaraja (Display Serif - Unique Telugu/Latin Serif)
+   1. Ramaraja (Display Serif - Telugu/Latin Serif)
    2. Josefin Sans (Geometric Sans - Variable Font: wght 100..700, ital 0..1)
    3. Raleway (Elegant Sans - Variable Font: wght 100..900, ital 0..1)
    4. Outfit (Modern Sans - Variable Font: wght 100..900)
+   5. Cormorant Garamond (Editorial Luxury Serif - Variable Font: wght 300..700)
    -------------------------------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Outfit:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Ramaraja&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Outfit:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Ramaraja&display=swap');
 
 :root {
   --font-brand: 'Outfit', sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Ramaraja', Georgia, serif;
   --bg-primary: #ffffff;
-  --text-primary: #111111;
-  --text-muted: #555555;
+  --bg-tint: #f3f3f6;
+  --navy-primary: #172347;
+  --navy-dark: #121c38;
+  --navy-light: #233464;
+  --text-primary: #172347;
+  --text-muted: #626c85;
   --text-spec: #333333;
   --border-light: #e5e5e5;
+  --border-navy: #172347;
   --btn-bg: #f5f5f7;
   --btn-hover: #e8e8ed;
-  --accent-color: #000000;
+  --accent-color: #172347;
 }
 
 /* Base resets & layout */
@@ -37,10 +44,483 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-brand);
 }
 
 /* --------------------------------------------------------------------------
-   Navigation Bar (Minimalist Luxury / Editorial)
+   Landing / Index Page (Luxury Architectural & Editorial Vibe)
+   -------------------------------------------------------------------------- */
+.index-page-body {
+  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ffffff;
+  position: relative;
+}
+
+@media (max-height: 700px) {
+  .index-page-body {
+    overflow-y: auto;
+    height: auto;
+  }
+}
+
+.luxury-home-container {
+  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.2rem 3.5rem;
+  overflow: hidden;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .luxury-home-container {
+    padding: 1.5rem 1.25rem;
+    height: auto;
+    min-height: 100dvh;
+  }
+}
+
+/* Universal Page Navigation Wrapper (Matches Home Page 1:1 Spacing) */
+.luxury-page-nav-wrapper {
+  width: 100%;
+  padding: 2.2rem 3.5rem 1.5rem 3.5rem;
+  background-color: transparent;
+  position: relative;
+  z-index: 20;
+}
+
+@media (max-width: 768px) {
+  .luxury-page-nav-wrapper {
+    padding: 1.5rem 1.25rem 1rem 1.25rem;
+  }
+}
+
+.luxury-top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 20;
+  width: 100%;
+}
+
+.brand-left-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--navy-primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.brand-left-logo:hover {
+  opacity: 0.85;
+  color: var(--navy-primary);
+}
+
+.brand-symbol-glyph {
+  display: inline-flex;
+  align-items: center;
+  color: var(--navy-primary);
+}
+
+@media (max-width: 576px) {
+  .brand-left-logo {
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Continuous Scrolling Background Text (Marquee Centered on Screen)
+   -------------------------------------------------------------------------- */
+.marquee-bg-wrap {
+  position: fixed;
+  top: 52%;
+  left: 0;
+  width: 100vw;
+  transform: translateY(-50%);
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  padding: 3rem 0 4rem; /* Extra padding so descenders (g, y, p) are never cut */
+  opacity: 0.98;
+}
+
+.marquee-content-track {
+  display: inline-flex;
+  width: max-content;
+  animation: marqueeContinuous 26s linear infinite;
+  will-change: transform;
+  align-items: center;
+  padding-bottom: 0.5rem;
+}
+
+.marquee-stream-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(6.5rem, 18vw, 16.5rem);
+  font-weight: 800;
+  color: var(--navy-primary);
+  letter-spacing: -0.04em;
+  line-height: 1.22; /* Generous line-height so descenders render fully */
+  text-transform: none;
+  display: inline-block;
+  padding-right: 2.5rem;
+  padding-bottom: 1rem;
+}
+
+@keyframes marqueeContinuous {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Hero Center Content (Image Card Centered with Generous Spacing)
+   -------------------------------------------------------------------------- */
+.hero-visual-center {
+  position: absolute;
+  top: 52%; /* Brought slightly down */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: auto;
+  width: 90%;
+  max-width: 680px;
+}
+
+.hero-image-frame {
+  width: min(290px, 60vw);
+  height: min(305px, 63vw);
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+  box-shadow: 0 16px 36px rgba(23, 35, 71, 0.12);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  margin-bottom: 2.2rem; /* Clean, generous space between image and text */
+}
+
+.hero-image-frame:hover {
+  transform: scale(1.02);
+  box-shadow: 0 24px 48px rgba(23, 35, 71, 0.18);
+}
+
+.hero-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-caption-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.12rem, 2.2vw, 1.48rem);
+  font-weight: 500;
+  color: var(--navy-primary);
+  line-height: 1.48;
+  margin: 0;
+  max-width: 600px;
+  letter-spacing: -0.015em;
+}
+
+/* --------------------------------------------------------------------------
+   Bottom Bar
+   -------------------------------------------------------------------------- */
+.luxury-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.bottom-copyright-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--navy-primary);
+  letter-spacing: -0.01em;
+  padding-bottom: 0.35rem;
+}
+
+.top-action-controls,
+.bottom-action-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-selection-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--navy-primary);
+  background-color: #ffffff;
+  border: 1.2px solid var(--navy-primary);
+  padding: 0.65rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  line-height: 1;
+}
+
+.btn-selection-outline:hover {
+  background-color: #f7f8fc;
+  transform: translateY(-1px);
+}
+
+.dots-square-icon {
+  display: grid;
+  grid-template-columns: repeat(2, 4px);
+  gap: 3px;
+  width: 11px;
+  height: 11px;
+}
+
+.dots-square-icon span {
+  width: 3.5px;
+  height: 3.5px;
+  background-color: var(--navy-primary);
+  border-radius: 0.5px;
+}
+
+.btn-menu-toggle-dark {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 40px;
+  background-color: var(--navy-primary);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  padding: 0;
+}
+
+.btn-menu-toggle-dark:hover {
+  background-color: var(--navy-dark);
+  transform: translateY(-1px);
+}
+
+.btn-menu-toggle-dark .bar {
+  width: 17px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 1px;
+  transition: all 0.25s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Luxury Menu Drawer (Right Side)
+   -------------------------------------------------------------------------- */
+.luxury-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(23, 35, 71, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  z-index: 90;
+}
+
+.luxury-menu-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.luxury-corner-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(390px, 94vw);
+  background-color: var(--navy-primary);
+  color: #ffffff;
+  z-index: 100;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.28);
+  transform: translateX(105%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3.5rem 2.8rem 2.5rem 2.8rem;
+}
+
+.luxury-corner-drawer.open {
+  transform: translateX(0);
+}
+
+@media (max-width: 576px) {
+  .luxury-corner-drawer {
+    padding: 2.2rem 1.75rem 1.75rem 1.75rem;
+    width: 100vw;
+  }
+}
+
+.menu-items-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-bottom: 3.5rem;
+}
+
+.menu-drawer-item {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  position: relative;
+  padding: 0.15rem 0;
+}
+
+.menu-drawer-item:hover {
+  opacity: 0.85;
+  transform: translateX(6px);
+  color: #ffffff;
+}
+
+.menu-drawer-item .item-title-serif,
+.menu-drawer-item .item-title-outfit {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.1rem, 5vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.menu-drawer-item .item-font-sub {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.25rem;
+}
+
+.menu-drawer-item.active-link .item-title-serif,
+.menu-drawer-item.active-link .item-title-outfit {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.menu-drawer-item.active-link::before {
+  content: '';
+  position: absolute;
+  left: -1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.menu-drawer-top-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+.drawer-close-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  padding: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  line-height: 1;
+}
+
+.drawer-close-btn:hover {
+  opacity: 0.75;
+  transform: rotate(90deg);
+}
+
+.drawer-close-btn svg {
+  stroke: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   About Editorial Modal
+   -------------------------------------------------------------------------- */
+.modal-editorial .modal-content {
+  background-color: #ffffff;
+  border: 1px solid var(--navy-primary);
+  border-radius: 0;
+  box-shadow: 0 25px 50px rgba(23, 35, 71, 0.2);
+}
+
+.modal-editorial .modal-header {
+  border-bottom: 1px solid #eeeeee;
+  padding: 1.5rem 2rem 1rem;
+}
+
+.modal-editorial .modal-body {
+  padding: 2rem;
+  color: var(--navy-primary);
+}
+
+.modal-editorial .modal-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  color: var(--navy-primary);
+  letter-spacing: -0.02em;
+}
+
+.spec-badge-box {
+  background-color: var(--bg-tint);
+  border-left: 3px solid var(--navy-primary);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Offcanvas & Legacy Hierarchy Page Styles
    -------------------------------------------------------------------------- */
 .editorial-nav {
   padding: 2.5rem 0 1.5rem;
@@ -115,177 +595,6 @@ body {
   color: #000;
   padding-left: 0.5rem;
   font-weight: 700;
-}
-
-/* --------------------------------------------------------------------------
-   Landing / Index Page (Full 100vh Viewport Layout with Mobile Optimization)
-   -------------------------------------------------------------------------- */
-.index-page-body {
-  height: 100vh;
-  min-height: 100vh;
-  min-height: 100dvh;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-@media (max-height: 750px) or (max-width: 768px) {
-  .index-page-body {
-    overflow-y: auto;
-    height: auto;
-    min-height: 100vh;
-    min-height: 100dvh;
-  }
-}
-
-.index-screen-wrapper {
-  height: 100vh;
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-}
-
-@media (max-height: 750px) or (max-width: 768px) {
-  .index-screen-wrapper {
-    height: auto;
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding-bottom: 2rem;
-  }
-}
-
-.hero-center-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 0;
-}
-
-.hero-title-wrap {
-  display: inline-block;
-  margin-bottom: 1rem;
-}
-
-.hero-typographical {
-  font-family: 'Ramaraja', serif;
-  font-size: clamp(3rem, 12vw, 9.5rem);
-  line-height: 0.95;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  margin: 0;
-  color: #000;
-}
-
-.hero-hierarchies {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: clamp(1.6rem, 6vw, 4.8rem);
-  font-weight: 200;
-  letter-spacing: -0.01em;
-  margin: 0;
-  text-align: right;
-  line-height: 1.1;
-  color: #000;
-  margin-top: -0.4rem;
-}
-
-/* 3 Navigation Cards at Bottom */
-.hierarchy-cards-row {
-  margin-top: 0;
-  padding-bottom: 1rem;
-}
-
-.hierarchy-card-item {
-  text-align: center;
-  padding: 1.25rem 0.75rem;
-}
-
-@media (max-width: 767.98px) {
-  .hierarchy-card-item {
-    padding: 0.85rem 0.5rem;
-  }
-}
-
-.hierarchy-card-title {
-  font-size: 1.45rem;
-  margin-bottom: 1.25rem;
-  font-weight: 600;
-  color: #000;
-  min-height: 2.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (max-width: 767.98px) {
-  .hierarchy-card-title {
-    margin-bottom: 0.75rem;
-  }
-}
-
-.hierarchy-card-title.h1-title {
-  font-family: 'Ramaraja', serif;
-  font-weight: 400;
-  font-size: clamp(1.25rem, 4vw, 1.5rem);
-}
-
-.hierarchy-card-title.h1-title span {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
-  font-size: clamp(0.95rem, 3.5vw, 1.1rem);
-  margin-left: 0.4rem;
-}
-
-.hierarchy-card-title.h2-title {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400;
-  font-size: clamp(1.3rem, 4vw, 1.6rem);
-}
-
-.hierarchy-card-title.h3-title {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 600;
-  font-size: clamp(1.3rem, 4vw, 1.6rem);
-}
-
-.btn-editorial-pill {
-  display: inline-block;
-  background-color: #000000;
-  color: #ffffff;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 0.6rem 2.4rem;
-  border-radius: 999px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  border: 1.5px solid #000000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-
-.btn-editorial-pill:hover {
-  background-color: #ffffff;
-  color: #000000;
-  border-color: #000000;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
-}
-
-@media (max-width: 576px) {
-  .editorial-nav {
-    padding: 1.5rem 0 1rem;
-  }
-  .brand-logo {
-    font-size: 1.4rem;
-  }
-  .scale-meta-box {
-    font-size: 0.85rem;
-    line-height: 1.35;
-  }
 }
 
 /* --------------------------------------------------------------------------
